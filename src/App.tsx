@@ -1,19 +1,13 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Provider } from "./contexts";
-import Megasena from "./components/Megasena";
-import Quina from "./components/Quina";
-import Timemania from "./components/Timemania";
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './routes'; // Importe o componente AppRoutes
 
-export default function App() {
+const App: React.FC = () => {
   return (
-    <Provider>
-      <Router>
-        <Routes>
-          <Route path="/megasena" element={<Megasena />} />
-          <Route path="/quina" element={<Quina />} />
-          <Route path="/timemania" element={<Timemania />} />
-        </Routes>
-      </Router>
-    </Provider>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
+
+export default App;

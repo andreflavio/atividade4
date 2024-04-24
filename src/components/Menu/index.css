@@ -1,0 +1,42 @@
+/* global.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Remova o margin-left e defina margens superior e inferior como 0 */
+}
+
+.menu li {
+    margin-right: 20px; /* Adiciona um espaçamento à direita de cada item do menu */
+}
+
+.menu li:not(:last-child) {
+    margin-right: 20px; /* Adicione um espaçamento à direita de todos os itens, exceto o último */
+}
+
+.menu li a {
+    color: purple; /* Muda a cor das letras do menu para roxo */
+    text-decoration: none;
+    font-weight: bold; /* Torna os itens do menu negrito */
+}
+
+.menu li a:hover {
+    color: grey;
+}
+
+.active a {
+    color: gray;
+}

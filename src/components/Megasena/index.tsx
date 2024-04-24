@@ -1,54 +1,43 @@
+// components/Megasena/index.tsx
 import React from "react";
-import "./index.css";
 import trevo from "../../assets/trevo-megasena.png";
 import { useLoteria } from "../../hooks";
+import Carregando from "../Carregando";
+import NomeLoteria from "../Principal/Esquerda/NomeLoteria";
+import Data from "../Principal/Direita/Data";
+import Acumulou from "../Principal/Direita/Acumulou";
+import Resultado from "../Principal/Direita/Resultado";
+import Estimativa from "../Principal/Esquerda/Estimativa";
+import Menu from "../Menu"; // Importe o componente Menu aqui
 
-export default function Megasena() {
+
+const Megasena: React.FC = () => {
   const { megasena } = useLoteria();
 
-  // Verifique se 'megasena' e 'valorEstimadoProximoConcurso' estão definidos antes de acessá-los
   if (!megasena || !megasena.valorEstimadoProximoConcurso) {
-    return <div>Carregando...</div>;
+    return <Carregando />;
   }
 
   return (
     <div className="mega-bloco-principal">
+      <Menu /> {/* Use o componente Menu aqui */}
       <div>
         <div className="mega-bloco-loteria">
           <img src={trevo} alt="" />
-          <span className="mega-nome-loteria">MEGA-SENA</span>
+          <NomeLoteria />
         </div>
-        <div className="mega-bloco-estimativa">
-          <div className="mega-texto-estimativa">
-            Estimativa de prêmio do próximo concurso. Sorteio em{" "}
-            {megasena.dataProximoConcurso}:
-          </div>
-          <div className="mega-valor-estimativa">
-            {megasena.valorEstimadoProximoConcurso.toLocaleString("pt-Br", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </div>
-        </div>
+        <Estimativa 
+          dataProximoConcurso={megasena.dataProximoConcurso}
+          valorEstimadoProximoConcurso={megasena.valorEstimadoProximoConcurso}
+        />
       </div>
       <div className="mega-bloco-direita">
-        <div className="mega-linha-bola">
-          {megasena.dezenas.map((dezena: string, index: number) => (
-            <div className="mega-bola" key={index}>
-              {/* Adicionando um zero à esquerda se o número for menor que 10 */}
-              {parseInt(dezena) < 10 ? `0${parseInt(dezena)}` : parseInt(dezena)}
-            </div>
-          ))}
-        </div>
-        <div className="mega-texto-acumulou">
-          {megasena.quantidadeGanhadores === 0
-            ? "ACUMULOU!"
-            : `${megasena.quantidadeGanhadores} GANHADORES`}
-        </div>
-        <div className="mega-data-concurso">
-          {`Concurso ${megasena.numeroDoConcurso} - ${megasena.dataPorExtenso}`}
-        </div>
+        <Resultado dezenas={megasena.dezenas} />
+        <Acumulou quantidadeGanhadores={megasena.quantidadeGanhadores} />
+        <Data data={`Concurso ${megasena.numeroDoConcurso} - ${megasena.dataPorExtenso}`} />
       </div>
     </div>
   );
-}
+};
+
+export default Megasena;
