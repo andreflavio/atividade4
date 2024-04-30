@@ -1,15 +1,14 @@
 body {
   font-family: 'Roboto', sans-serif;
-  margin-top: 5px; /* Ajuste a margem superior do corpo para acomodar o menu */
+  margin-top: 5px;
 }
 
 .menu {
-  position: fixed; /* Alterado para fixo para manter o menu no topo */
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
-  background-color: white; /* Adicionado fundo branco para cobrir conteúdo */
-  
+  background-color: white;
 }
 
 .menu ul {
@@ -18,10 +17,12 @@ body {
   list-style-type: none;
   padding: 0;
   margin-left: 25px;
+  margin-bottom: 0; /* Adiciona uma margem inferior */
 }
 
 .menu li {
   margin-right: 20px;
+  margin-bottom: 20px; /* Adiciona uma margem inferior */
 }
 
 .menu li a {
@@ -35,12 +36,13 @@ body {
 }
 
 .menu li.active a {
-  color: grey; /* Estilo para o texto ativo */
+  color: grey;
 }
 
 .active a {
   color: gray;
 }
+
 /* Estilos específicos para cada página */
 
 .mega-bloco-principal,
@@ -146,11 +148,13 @@ body {
   font-weight: bold;
   color: #0066b3;
 }
+
 .mega-bloco-direita,
 .timemania-bloco-direita,
 .quina-bloco-direita {
   margin-left: 50px;
 }
+
 .mega-linha-bola,
 .timemania-linha-bola,
 .quina-linha-bola {
@@ -227,15 +231,24 @@ body {
   padding-left: 15px;
   font-size: 15px;
 }
-/* styles.css */
 
 .carregando {
-  position: absolute; /* Position for absolute centering */
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the content */
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Add other styles as needed */
 }
+
+.megasena {
+  color: green !important; /* Cor padrão da Mega Sena */
+}
+
+.megasena:active, .megasena:focus { /* Quando o link é clicado ou focado */
+  color: gray !important;
+  
+}
+
+
